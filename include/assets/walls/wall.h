@@ -5,6 +5,7 @@
 class wall : public ksdk::actor
 {
 public:
-    wall(int x, int y) : ksdk::actor(x, y) {}
+    wall(float x, float y)
+        : ksdk::actor(x, y) {}
     virtual ~wall() = default;
 };

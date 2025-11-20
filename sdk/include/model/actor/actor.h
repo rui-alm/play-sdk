@@ -9,8 +9,8 @@ namespace ksdk {
     class actor : public tick_listener
     {
     public:
-        actor() : actor(0, 0) {}
-        actor(int x, int y) : id(id_counter++), x(x), y(y) {}
+        actor() : actor(0.0f, 0.0f) {}
+        actor(float x, float y) : id(id_counter++), x(x), y(y) {}
         virtual ~actor() = default;
         virtual int on_tick(const tick_event& tick_event) override
         {
@@ -18,13 +18,14 @@ namespace ksdk {
             return 0;
         }
         int get_id() const { return id; }
-        int get_x() const { return x; }
-        int get_y() const { return y; }
+        float get_x() const { return x; }
+        float get_y() const { return y; }
+        void set_x(float x) { this->x = x; }
     private:
         static int id_counter;
         const int id;
     protected:
-        int x;
-        int y;
+        float x;
+        float y;
     };
 }
