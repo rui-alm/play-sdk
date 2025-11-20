@@ -1,4 +1,4 @@
-#include "system/playdate/pd_system.h"
+#include "playdate/system/pd_system.h"
 #include "controller/main_controller.h"
 #include "model/keys.h"
 #include "pd_api.h"

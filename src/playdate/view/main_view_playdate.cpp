@@ -1,6 +1,7 @@
 #include "playdate/view/main_view_playdate.h"
 #include <string>
 #include <tuple>
+#include "graphics/types.h"
 #include "model/main_model.h"
 #include "view/main_view.h"
 

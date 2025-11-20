@@ -11,7 +11,7 @@
 #include <pd_api.h>
 #include <pdcpp/pdnewlib.h>
 
-#include "system/playdate/pd_system.h"
+#include "playdate/system/pd_system.h"
 
 constexpr int TEXT_WIDTH = 86;
 constexpr int TEXT_HEIGHT = 16;
