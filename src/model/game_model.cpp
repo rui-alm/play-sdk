@@ -1,5 +1,9 @@
 #include "model/game_model.h"
 
+game_model::game_model() : camera(100, 100)
+{
+}
+
 int game_model::on_tick(void* userdata)
 {
     for (auto& cell_x: actors_map)

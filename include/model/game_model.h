@@ -8,7 +8,7 @@
 class game_model
 {
 public:
-    game_model() = default;
+    game_model();
 
     template<class ACTOR, class... ARGS>
     ACTOR& add_actor(ARGS&&... args)
@@ -27,9 +27,12 @@ public:
         return actors_map[x/CELL_SIZE_X][y/CELL_SIZE_Y];
     }
 
+    const ksdk::actor& get_camera() const { return camera; }
+
     int on_tick(void* userdata);
 private:
     static constexpr int CELL_SIZE_X = 100;
     static constexpr int CELL_SIZE_Y = 100;
     std::array<std::array<std::unordered_map<int, std::unique_ptr<ksdk::actor>>, 10>, 10> actors_map;
+    ksdk::actor camera;
 };

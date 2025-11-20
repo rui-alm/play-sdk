@@ -11,7 +11,8 @@ game_view::game_view(ksdk::system_graphics& graphics, const class game_model& ga
 int game_view::on_tick(void* userdata)
 {
     graphics.clear();
-    graphics.set_draw_offset(0, 0);
+    const auto& camera = game_model.get_camera();
+    graphics.set_draw_offset(-camera.get_x(), -camera.get_y());
     const auto& actors_cell = game_model.get_actors_cell(100, 100);
     for (const auto& actor_entry: actors_cell)
     {
