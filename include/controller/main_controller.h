@@ -1,11 +1,12 @@
 #pragma once
 
 #include "controller/controller.h"
+#include "controller/game_controller.h"
 #include "controller/input_controller.h"
 #include "model/main_model.h"
-#include "model/main_state.h"
 #include "playdate/view/main_view_playdate.h"
 #include "system/system.h"
+#include <memory>
 
 class main_controller : public ksdk::controller
 {
@@ -19,8 +20,8 @@ public:
     // virtual int key_pressed(uint32_t key) override;
 private:
     ksdk::system& system;
-    main_state state;
     input_controller input_controller_;
-    main_model main_model_;
+    class main_model main_model;
     main_view_playdate main_view_;
+    std::unique_ptr<class game_controller> game_controller;
 };

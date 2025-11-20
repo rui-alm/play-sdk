@@ -1,25 +1,34 @@
 #include "controller/main_controller.h"
+
+#include <memory>
+
+#include "controller/game_controller.h"
 #include "controller/input_controller.h"
-#include "model/keys.h"
 #include "model/main_model.h"
 #include "model/main_state.h"
 #include "system/system.h"
-#include "view/main_view.h"
-#include <cstdint>
-#include <tuple>
 
 main_controller::main_controller(ksdk::system &system)
-  : system(system), state(main_state::main_menu),
-    input_controller_(system), main_model_(input_controller_)
-    , main_view_(system.graphics(), main_model_) {}
+  : system(system)
+    , input_controller_(system), main_model(input_controller_)
+    , main_view_(system.graphics(), main_model) {}
 
 int main_controller::on_tick(void *userdata) {
-  std::ignore = userdata;
+  input_controller_.on_tick(userdata);
+  const main_state state = main_model.get_state();
   switch (state) {
   case main_menu:
-    input_controller_.on_tick(userdata);
-    main_model_.on_tick(userdata);
+    main_model.on_tick(userdata);
     main_view_.on_tick(userdata);
+    break;
+  case load_game:
+    if (!game_controller)
+      game_controller = std::make_unique<class game_controller>(input_controller_);
+    main_model.set_state(run_game);
+    break;
+  case run_game:
+    main_model.on_tick(userdata);
+    game_controller->on_tick(userdata);
     break;
   }
   system.draw_fps(0, 0);
