@@ -10,8 +10,8 @@
 #include "system/graphics.h"
 #include "playdate/system/pd_file_system.h"
 #include "playdate/system/pd_graphics.h"
-#include "system/system.h"
 #include "playdate/system/pd_display.h"
+#include "system/system.h"
 
 class main_controller;
 
@@ -21,13 +21,25 @@ namespace ksdk
     {
         class pd_system : public ksdk::system
         {
-            friend class ksdk::playdate::graphics;
+            friend class logger;
         public:
             pd_system(PlaydateAPI& pd);
             virtual ~pd_system() = default;
 
             static int on_event(PlaydateAPI* pd, PDSystemEvent event, uint32_t arg);
             static int on_update(void* userdata);
+
+            // Logging
+            template<typename... Args>
+            void log_to_console(const char* format, Args... args)
+            {
+                pd.system->logToConsole(format, args...);
+            }
+            template<typename... Args>
+            void error(const char* format, Args... args)
+            {
+                pd.system->error(format, args...);
+            }
 
             virtual system_display& display() override;
             virtual system_graphics& graphics() override;

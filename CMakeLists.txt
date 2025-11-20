@@ -30,6 +30,7 @@ sdk/src/playdate/pd_display.cpp
 sdk/include/playdate/system/pd_graphics.h
 sdk/src/playdate/system/pd_graphics.cpp
 sdk/src/playdate/graphics/pd_bitmap_table.cpp
+sdk/include/playdate/system/pd_system.h
 sdk/src/playdate/system/pd_system.cpp
 src/main.cpp
 src/assets/walls/wall.cpp
@@ -59,6 +60,7 @@ sdk/include/test/graphics/framebuffer_test.h
 sdk/src/test/graphics/framebuffer_test.cpp
 sdk/include/test/graphics/text_test.h
 sdk/src/test/playdate/graphics/text_test.cpp
+sdk/include/playdate/system/logger.h
 )
 
 # Link against the pdcpp_core library, and you're good to go!
