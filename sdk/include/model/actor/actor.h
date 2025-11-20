@@ -8,9 +8,8 @@ namespace ksdk {
     class actor : public tick_listener
     {
     public:
+        actor() : actor(0, 0) {}
         actor(int x, int y) : x(x), y(y) {}
-        actor(actor&) = delete;
-        actor& operator=(const actor&) = delete;
         virtual ~actor() = default;
         virtual int on_tick(void *userdata) override
         {

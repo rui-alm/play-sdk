@@ -1,6 +1,7 @@
 #pragma once
 
 #include "listener/tick_listener.h"
+#include <tuple>
 
 namespace ksdk
 {
@@ -8,5 +9,10 @@ namespace ksdk
     {
     public:
         virtual ~view() = default;
+        virtual int on_tick(void *userdata) override
+        {
+            std::ignore = userdata;
+            return 0;
+        }
     };
 }

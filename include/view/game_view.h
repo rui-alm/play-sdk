@@ -11,8 +11,10 @@ public:
     ~game_view() = default;
 
     int on_tick(void* userdata) override;
+    std::vector<std::unique_ptr<ksdk::view>>& get_actors_views() { return actors_views; }
 private:
     ksdk::system_graphics& graphics;
     std::unique_ptr<ksdk::bitmap_table> bitmap_table;
     // const class game_model& game_model;
+    std::vector<std::unique_ptr<ksdk::view>> actors_views;
 };

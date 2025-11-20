@@ -19,5 +19,4 @@ private:
     std::unique_ptr<ksdk::bitmap_table> bitmap_table;
     class game_model game_model;
     class game_view game_view;
-    std::vector<std::unique_ptr<ksdk::view>> actors_views;
 };

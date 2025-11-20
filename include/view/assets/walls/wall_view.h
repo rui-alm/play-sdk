@@ -13,6 +13,7 @@ public:
             const ksdk::bitmap_table& bitmap_table)
             : graphics(graphics), wall(wall)
             , bitmap_table(bitmap_table) {}
+    ~wall_view() = default;
     virtual int on_tick(void* userdata) override
     {
         std::ignore = userdata;
