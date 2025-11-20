@@ -61,6 +61,10 @@ sdk/src/test/graphics/framebuffer_test.cpp
 sdk/include/test/graphics/text_test.h
 sdk/src/test/playdate/graphics/text_test.cpp
 sdk/include/playdate/system/logger.h
+sdk/include/graphics/text/line_splitter.h
+sdk/src/graphics/text/line_splitter.cpp
+sdk/include/test/graphics/text/line_splitter_test.h
+sdk/src/test/graphics/line_splitter_test.cpp
 )
 
 # Link against the pdcpp_core library, and you're good to go!
