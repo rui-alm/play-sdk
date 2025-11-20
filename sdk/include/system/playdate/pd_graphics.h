@@ -22,6 +22,7 @@ namespace ksdk::playdate {
         virtual void free_bitmap(ksdk::bitmap* bitmap) override;
         virtual void draw_bitmap(const ksdk::bitmap& bitmap, int x, int y) override;
         virtual std::unique_ptr<ksdk::bitmap_table> new_bitmap_table(const std::string& path, int count, int width, int height) override;
+        virtual void set_draw_offset(int x, int y) override;
     private:
         playdate_graphics& pd_graphics;
     };

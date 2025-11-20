@@ -59,3 +59,8 @@ std::unique_ptr<ksdk::bitmap_table> graphics::new_bitmap_table(const std::string
     auto bitmap_table = std::make_unique<ksdk::playdate::bitmap_table>(pd_graphics, path, count, width, height);
     return bitmap_table;
 }
+
+void graphics::set_draw_offset(int x, int y)
+{
+    pd_graphics.setDrawOffset(x, y);
+}
