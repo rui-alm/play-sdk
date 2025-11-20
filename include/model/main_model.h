@@ -13,7 +13,7 @@ public:
     main_state get_state() const { return state; }
     void set_state(const main_state state) { this->state = state; }
 private:
-    const int NUMBER_OF_MENUS = 3;
+    const int NUMBER_OF_MENUS = 2;
     main_state state;
     const class input_controller& input_controller;
     int selected_menu;

@@ -18,28 +18,37 @@ add_playdate_application(PDLondon)
 
 target_include_directories(PDLondon
 PUBLIC
-${CMAKE_CURRENT_SOURCE_DIR}/include
-${CMAKE_CURRENT_SOURCE_DIR}/sdk/include
+include
+sdk/include
 )
 
 # Add its sources
 target_sources(PDLondon
 PUBLIC
-${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/model/actor/actor.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/playdate/pd_display.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/playdate/pd_graphics.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/playdate/graphics/pd_bitmap_table.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/playdate/system/pd_system.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/assets/walls/wall.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/model/game_model.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/model/main_model.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/controller/game_controller.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/controller/input_controller.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/controller/main_controller.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/playdate/view/main_view_playdate.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/view/main_view.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/view/game_view.cpp
+sdk/src/model/actor/actor.cpp
+sdk/src/playdate/pd_display.cpp
+sdk/src/playdate/pd_graphics.cpp
+sdk/src/playdate/graphics/pd_bitmap_table.cpp
+sdk/src/playdate/system/pd_system.cpp
+src/main.cpp
+src/assets/walls/wall.cpp
+src/model/game_model.cpp
+src/model/main_model.cpp
+src/controller/game_controller.cpp
+src/controller/input_controller.cpp
+src/controller/main_controller.cpp
+src/playdate/view/main_view_playdate.cpp
+src/view/main_view.cpp
+src/view/game_view.cpp
+sdk/include/test/controller/test_menu_controller.h
+sdk/src/test/controller/test_menu_controller.cpp
+sdk/include/test/model/test.h
+sdk/include/test/model/actor_test.h
+sdk/src/test/model/test.cpp
+sdk/src/test/model/actor_test.cpp
+sdk/include/test/view/test_menu_view.h
+sdk/src/test/view/test_menu_view.cpp
+sdk/include/test/model/test_state.h
 )
 
 # Link against the pdcpp_core library, and you're good to go!

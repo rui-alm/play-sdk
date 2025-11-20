@@ -5,6 +5,7 @@ namespace ksdk
     // These are optimized to match PDButtons
     typedef enum keys
     {
+        None = 0,
         Left = (1 << 0),
         Right = (1 << 1),
         Up = (1 << 2),

@@ -105,7 +105,7 @@ std::vector<ksdk::keys> pd_system::buttons_to_vector(PDButtons& buttons)
     return vector;
 }
 
-unsigned int pd_system::get_current_time_milliseconds()
+unsigned int pd_system::get_current_time_milliseconds() const
 {
     const unsigned int milliseconds = pd.system->getCurrentTimeMilliseconds();
     return milliseconds;

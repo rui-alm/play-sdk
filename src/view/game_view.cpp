@@ -20,5 +20,13 @@ int game_view::on_tick(const ksdk::tick_event& tick_event)
         const auto& actor_view = actors_views.at(actor->get_id());
         actor_view->on_tick(tick_event);
     }
+    ksdk::bitmap* bmp = graphics.load_bitmap("tick");
+    graphics.draw_bitmap(*bmp, 200, 200);
+    bmp = graphics.load_bitmap("tick_outline");
+    graphics.draw_bitmap(*bmp, 220, 200);
+    bmp = graphics.load_bitmap("cross_outline");
+    graphics.draw_bitmap(*bmp,240,200);
+    bmp = graphics.load_bitmap("cross");
+    graphics.draw_bitmap(*bmp,260,200);
     return 0;
 }

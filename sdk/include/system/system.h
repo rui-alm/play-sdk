@@ -18,6 +18,7 @@ namespace ksdk {
 		virtual void button_state(keys& down
 								, keys& pressed
 								, keys& released) = 0;
+        virtual unsigned int get_current_time_milliseconds() const = 0;
 	};
 
 	typedef enum system_event

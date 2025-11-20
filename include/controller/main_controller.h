@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 
 #include "controller/controller.h"
 #include "controller/game_controller.h"
@@ -6,7 +7,8 @@
 #include "model/main_model.h"
 #include "playdate/view/main_view_playdate.h"
 #include "system/system.h"
-#include <memory>
+
+#include "test/controller/test_menu_controller.h"
 
 class main_controller : public ksdk::controller
 {
@@ -24,4 +26,5 @@ private:
     class main_model main_model;
     main_view_playdate main_view_;
     std::unique_ptr<class game_controller> game_controller;
+    std::unique_ptr<class test_menu_controller> test_menu_controller;
 };

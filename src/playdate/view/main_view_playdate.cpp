@@ -1,7 +1,7 @@
 #include "playdate/view/main_view_playdate.h"
+#include <array>
 #include <string>
 #include <tuple>
-#include "graphics/types.h"
 #include "model/main_model.h"
 #include "view/main_view.h"
 
@@ -17,8 +17,10 @@ int main_view_playdate::on_tick(const ksdk::tick_event& tick_event)
 {
     std::ignore = tick_event;
     const int selected_menu = main_model.get_selected_menu();
+    std::array<std::string, 2> menus {"New game", "Tests"};
+
     graphics.clear();
-    const std::string menu = "New Game " + std::to_string(selected_menu);
+    const std::string menu = menus.at(selected_menu);
     const int x = 100;
     const int y = 100;
     graphics.draw_text(menu, 100, 100);

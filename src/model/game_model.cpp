@@ -1,6 +1,6 @@
 #include "model/game_model.h"
 
-game_model::game_model() : camera(100, 100)
+game_model::game_model() : camera(0.0f, 0.0f)
 {
 }
 
