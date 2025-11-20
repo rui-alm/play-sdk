@@ -14,7 +14,7 @@
 class test : public ksdk::tick_listener
 {
 public:
-    test(const ksdk::system& system, const std::string& title);
+    test(ksdk::system& system, const std::string& title);
     virtual ~test() = default;
 
     virtual int on_tick(const ksdk::tick_event &tick_event) override;
@@ -28,7 +28,7 @@ public:
     void add_sub_test(std::unique_ptr<test>&& sub_test);
 protected:
     const size_t id;
-    const ksdk::system& system;
+    ksdk::system& system;
     const std::string title;
     test_state state;
     bool sub_tests_passed;

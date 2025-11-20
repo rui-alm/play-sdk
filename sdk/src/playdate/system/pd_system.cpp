@@ -58,7 +58,7 @@ int pd_system::on_event(PlaydateAPI* pd, PDSystemEvent event, uint32_t arg)
     return 0;
 }
 
-pd_system::pd_system(PlaydateAPI& pd) : pd(pd), pd_graphics(*pd.graphics)
+pd_system::pd_system(PlaydateAPI& pd) : pd(pd), pd_graphics(*pd.graphics), pd_filesystem(*pd.file)
 {
 }
 
@@ -70,6 +70,11 @@ ksdk::system_display& pd_system::display()
 ksdk::system_graphics& pd_system::graphics()
 {
     return pd_graphics;
+}
+
+ksdk::file_system& pd_system::file_system()
+{
+    return pd_filesystem;
 }
 
 void pd_system::draw_fps(int x, int y)

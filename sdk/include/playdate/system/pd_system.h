@@ -8,6 +8,7 @@
 #include "pd_api.h"
 #include "pd_api/pd_api_sys.h"
 #include "system/graphics.h"
+#include "playdate/system/pd_file_system.h"
 #include "system/playdate/pd_graphics.h"
 #include "system/system.h"
 #include "playdate/system/pd_display.h"
@@ -29,6 +30,7 @@ namespace ksdk
 
             virtual system_display& display() override;
             virtual system_graphics& graphics() override;
+            virtual class ksdk::file_system& file_system() override;
             virtual void draw_fps(int x, int y) override;
             virtual void button_state(ksdk::keys& down
                                     , ksdk::keys& pressed
@@ -41,6 +43,7 @@ namespace ksdk
             PlaydateAPI& pd;
             ksdk::playdate::display pd_display;
             ksdk::playdate::graphics pd_graphics;
+            ksdk::playdate::file_system pd_filesystem;
 
             static std::vector<ksdk::keys> buttons_to_vector(PDButtons& buttons);
         };

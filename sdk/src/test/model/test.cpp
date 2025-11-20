@@ -2,7 +2,7 @@
 
 size_t test::id_counter = 0;
 
-test::test(const ksdk::system& system, const std::string& title)
+test::test(ksdk::system& system, const std::string& title)
     : id(id_counter++), system(system), title(title), state(INITIALIZED), sub_tests_passed(true)
 {
 }

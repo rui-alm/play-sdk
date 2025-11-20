@@ -49,6 +49,11 @@ sdk/src/test/model/actor_test.cpp
 sdk/include/test/view/test_menu_view.h
 sdk/src/test/view/test_menu_view.cpp
 sdk/include/test/model/test_state.h
+sdk/include/system/file_system.h
+sdk/include/playdate/system/pd_file_system.h
+sdk/src/playdate/system/pd_file_system.cpp
+sdk/include/test/graphics/font_test.h
+sdk/src/test/playdate/graphics/pd_font_test.cpp
 )
 
 # Link against the pdcpp_core library, and you're good to go!

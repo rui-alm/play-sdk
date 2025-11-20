@@ -11,6 +11,7 @@ main_view_playdate::main_view_playdate(ksdk::system_graphics& graphics,
     , main_model(main_model)
 {
     graphics.set_font("/System/Fonts/Asheville-Sans-14-Bold.pft");
+    // graphics.set_font("/System/Fonts/Roobert-10-Bold.pft");
 }
 
 int main_view_playdate::on_tick(const ksdk::tick_event& tick_event)

@@ -5,6 +5,7 @@
 #include "model/keys.h"
 #include "system/display.h"
 #include "system/graphics.h"
+#include "system/file_system.h"
 
 namespace ksdk {
 	class system
@@ -14,6 +15,7 @@ namespace ksdk {
 		virtual ~system() = default;
 		virtual system_display& display() = 0;
 		virtual system_graphics& graphics() = 0;
+        virtual class file_system& file_system() = 0;
 		virtual void draw_fps(int x, int y) = 0;
 		virtual void button_state(keys& down
 								, keys& pressed
