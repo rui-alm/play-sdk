@@ -12,8 +12,9 @@ namespace ksdk::playdate {
         graphics(const playdate_graphics& pd_graphics);
         virtual ~graphics() = default;
 
+        int clear() override;
         int draw_text(const std::string& text, int x, int y) override;
     private:
-        const playdate_graphics& pd_graphics;
+        playdate_graphics& pd_graphics;
     };
 }

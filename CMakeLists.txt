@@ -29,8 +29,11 @@ ${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/system/playdate/pd_display.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/system/playdate/pd_graphics.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/system/playdate/pd_system.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/controllers/main_controller.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/views/main_view.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/model/main_model.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/controller/input_controller.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/controller/main_controller.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/playdate/view/main_view_playdate.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/view/main_view.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/sprites/one.png)
 
 # Link against the pdcpp_core library, and you're good to go!

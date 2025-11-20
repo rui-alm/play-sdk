@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+
+#include "model/keys.h"
 #include "system/display.h"
 #include "system/graphics.h"
 
@@ -12,6 +15,9 @@ namespace ksdk {
 		virtual system_display& display() = 0;
 		virtual system_graphics& graphics() = 0;
 		virtual void draw_fps(int x, int y) = 0;
+		virtual void button_state(keys& down
+								, keys& pressed
+								, keys& released) = 0;
 	};
 
 	typedef enum system_event

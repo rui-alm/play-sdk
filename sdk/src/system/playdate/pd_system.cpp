@@ -1,9 +1,12 @@
 #include "system/playdate/pd_system.h"
-#include "controllers/main_controller.h"
+#include "controller/main_controller.h"
+#include "model/keys.h"
 #include "pd_api.h"
+#include "pd_api/pd_api_sys.h"
 #include "system/graphics.h"
 #include "system/playdate/pd_graphics.h"
 #include <memory>
+#include <tuple>
 
 using namespace ksdk::playdate;
 
@@ -20,25 +23,29 @@ int pd_system::on_event(PlaydateAPI* pd, PDSystemEvent event, uint32_t arg)
 {
     std::ignore = arg;
     // Initialization just creates our "game" object
-    if (event == kEventInit)
+    switch(event)
     {
+    case kEventInit:
         system = std::make_unique<ksdk::playdate::pd_system>(*pd);
         main_controller = std::make_unique<class main_controller>(*system);
 
         system->pd.display->setRefreshRate(20);
-        // helloWorld = std::make_unique<HelloWorld>(pd);
 
         // and sets the tick function to be called on update to turn off the
         // typical 'Lua'-ness.
         system->pd.system->setUpdateCallback(on_update, pd);
-    }
-
-    // Destroy the global state to prevent memory leaks
-    if (event == kEventTerminate)
-    {
+        break;
+    case kEventTerminate:
         system->pd.system->logToConsole("Tearing down...");
+        // Destroy the global state to prevent memory leaks
         main_controller.reset();
         system.reset();
+        break;
+    case kEventKeyPressed:
+        // main_controller->key_pressed(arg);
+        break;
+    default:
+        break;
     }
     return 0;
 }
@@ -60,4 +67,32 @@ ksdk::system_graphics& pd_system::graphics()
 void pd_system::draw_fps(int x, int y)
 {
     pd.system->drawFPS(x, y);
+}
+
+void pd_system::button_state(keys& down
+                    , keys& pressed
+                    , keys& released)
+{
+    // These are optimized to match PDButtons
+    pd.system->getButtonState(reinterpret_cast<PDButtons*>(&down)
+    , reinterpret_cast<PDButtons*>(&pressed)
+    , reinterpret_cast<PDButtons*>(&released));
+}
+
+std::vector<ksdk::keys> pd_system::buttons_to_vector(PDButtons& buttons)
+{
+    std::vector<keys> vector;
+    if (buttons & kButtonUp)
+        vector.emplace_back(Up);
+    if (buttons & kButtonDown)
+        vector.emplace_back(Down);
+    if (buttons & kButtonLeft)
+        vector.emplace_back(Left);
+    if (buttons & kButtonRight)
+        vector.emplace_back(Right);
+    if (buttons & kButtonA)
+        vector.emplace_back(Enter);
+    if (buttons & kButtonB)
+        vector.emplace_back(Back);
+    return vector;
 }

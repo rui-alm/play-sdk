@@ -1,0 +1,11 @@
+#pragma once
+
+namespace ksdk {
+    class tick_listener
+    {
+    public:
+        tick_listener() = default;
+        virtual ~tick_listener() = default;
+        virtual int on_tick(void* userdata) = 0;
+    };
+}
