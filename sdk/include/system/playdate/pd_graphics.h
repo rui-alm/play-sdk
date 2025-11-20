@@ -18,6 +18,7 @@ namespace ksdk::playdate {
         virtual int draw_text(const std::string& text, int x, int y) override;
         virtual int draw_rect(int x, int y, int width, int height) override;
         virtual int set_font(const std::string& path) override;
+        virtual int get_font_height(const std::string &path, uint8_t& font_height) const override;
         virtual ksdk::bitmap* load_bitmap(const std::string& path) override;
         virtual void free_bitmap(ksdk::bitmap* bitmap) override;
         virtual void draw_bitmap(const ksdk::bitmap& bitmap, int x, int y) override;

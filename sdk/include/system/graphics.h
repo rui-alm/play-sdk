@@ -17,6 +17,7 @@ namespace ksdk
         virtual int draw_text(const std::string& text, int x, int y) = 0;
         virtual int draw_rect(int x, int y, int width, int height) = 0;
         virtual int set_font(const std::string& path) = 0;
+        virtual int get_font_height(const std::string& path, uint8_t& font_height) const = 0;
         virtual ksdk::bitmap* load_bitmap(const std::string& path) = 0;
         virtual void free_bitmap(ksdk::bitmap* bitmap) = 0;
         virtual void draw_bitmap(const ksdk::bitmap& bitmap, int x, int y) = 0;

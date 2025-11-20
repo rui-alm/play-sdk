@@ -37,6 +37,14 @@ int graphics::set_font(const std::string& path)
     return 0;
 }
 
+int graphics::get_font_height(const std::string &path, uint8_t& font_height) const
+{
+    const char* err;
+    LCDFont* const font = pd_graphics.loadFont(path.c_str(), &err);
+    font_height = pd_graphics.getFontHeight(font);
+    return 0;
+}
+
 ksdk::bitmap* graphics::load_bitmap(const std::string& path)
 {
     const char* err;
