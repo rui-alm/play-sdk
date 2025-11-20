@@ -49,8 +49,8 @@ namespace ksdk
                                     , ksdk::keys& pressed
                                     , ksdk::keys& released) override;
             virtual unsigned int get_current_time_milliseconds() const override;
-        private:
             static std::unique_ptr<pd_system> system;
+        private:
             static std::unique_ptr<class main_controller> main_controller;
             static unsigned int last_timestamp;
             PlaydateAPI& pd;

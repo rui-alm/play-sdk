@@ -7,6 +7,8 @@
 #include "graphics/types.h"
 #include "system/graphics.h"
 
+
+
 namespace ksdk::playdate {
 
     class graphics : public ksdk::system_graphics
@@ -23,23 +25,24 @@ namespace ksdk::playdate {
         virtual int get_text_width(const char* const text, const size_t size) const override;
         // Geometry
         virtual int draw_rect(int x, int y, int width, int height) override;
+        virtual int draw_ellipse(int x, int y, int width, int height, int line_width, float start_angle, float end_angle) override;
         // Bitmaps
-        virtual ksdk::bitmap* load_bitmap(const std::string& path) override;
-        virtual void free_bitmap(ksdk::bitmap* bitmap) override;
-        virtual void draw_bitmap(const ksdk::bitmap& bitmap, int x, int y) override;
-        virtual void get_bitmap_data(ksdk::bitmap* bitmap, int* width, int* height, int* rowbytes, uint8_t** mask, uint8_t** data) override;
+        // virtual ksdk::bitmap* load_bitmap(const std::string& path) override;
+        // virtual void free_bitmap(ksdk::bitmap* bitmap) override;
+        // virtual void draw_bitmap(const ksdk::bitmap& bitmap, int x, int y) override;
+        // virtual void get_bitmap_data(ksdk::bitmap* bitmap, int* width, int* height, int* rowbytes, uint8_t** mask, uint8_t** data) override;
         // Bitmap tables
-        virtual std::unique_ptr<ksdk::bitmap_table> new_bitmap_table(const std::string& path, int count, int width, int height) override;
+        // virtual std::unique_ptr<ksdk::bitmap_table> new_bitmap_table(const std::string& path, int count, int width, int height) override;
         // Video
         virtual void set_draw_offset(int x, int y) override;
         // Misc
         virtual int clear() override;
-        virtual ksdk::bitmap* get_framebuffer() override;
+        // virtual ksdk::bitmap* get_framebuffer() override;
 
         // Unimplemented
-        void push_context(ksdk::bitmap* target);
-        void pop_context();
-        void set_stencil(ksdk::bitmap* stencil);
+        // void push_context(ksdk::bitmap* target);
+        // void pop_context();
+        // void set_stencil(ksdk::bitmap* stencil);
         // void set_draw_mode(ksdk::bitmap_draw_mode mode);
         void set_clip_rect(int x, int y, int width, int height);
         void set_screen_clip_rect(int x, int y, int width, int height);

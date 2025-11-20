@@ -3,7 +3,7 @@
 size_t test::id_counter = 0;
 
 test::test(ksdk::system& system, const std::string& title)
-    : id(id_counter++), system(system), title(title), state(INITIALIZED), sub_tests_passed(true)
+    : id(id_counter++), system(system), title(title), state(INITIALIZED), result(true), sub_tests_passed(true)
 {
 }
 
@@ -20,12 +20,30 @@ int test::on_tick(const ksdk::tick_event &tick_event)
         switch(sub_test_state)
         {
         case INITIALIZED:
+        {
             test->set_state(RUNNING);
-            test->on_tick(tick_event);
+            const int finished = test->on_tick(tick_event);
+            if (finished)
+            {
+                test->state = test->result ? PASSED : FAILED;
+                sub_tests_passed &= test->result;
+                result &= sub_tests_passed;
+                test_queue.pop();
+            }
             break;
+        }
         case RUNNING:
-            test->on_tick(tick_event);
+        {
+            const int finished = test->on_tick(tick_event);
+            if (finished)
+            {
+                test->state = test->result ? PASSED : FAILED;
+                sub_tests_passed &= test->result;
+                result &= sub_tests_passed;
+                test_queue.pop();
+            }
             break;
+        }
         case FAILED:
             sub_tests_passed = false;
             test_queue.pop();

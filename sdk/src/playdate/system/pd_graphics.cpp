@@ -39,6 +39,13 @@ int graphics::draw_rect(int x, int y, int width, int height)
     return 0;
 }
 
+int graphics::draw_ellipse(int x, int y, int width, int height, int line_width, float start_angle, float end_angle)
+{
+    pd_graphics.drawEllipse(x, y, width, height, line_width, start_angle, end_angle, kColorBlack);
+    return 0;
+}
+
+
 int graphics::set_font(const std::string& path)
 {
     const char* err;
@@ -79,42 +86,42 @@ int graphics::get_text_width(const char* const text, const size_t size) const
     return width;
 }
 
-ksdk::bitmap* graphics::load_bitmap(const std::string& path)
-{
-    const char* err;
-    LCDBitmap* bitmap = pd_graphics.loadBitmap(path.c_str(), &err);
-    return bitmap;
-}
+// ksdk::bitmap* graphics::load_bitmap(const std::string& path)
+// {
+//     const char* err;
+//     LCDBitmap* bitmap = pd_graphics.loadBitmap(path.c_str(), &err);
+//     return bitmap;
+// }
 
-void graphics::free_bitmap(ksdk::bitmap* bitmap)
-{
-    pd_graphics.freeBitmap(bitmap);
-}
+// void graphics::free_bitmap(ksdk::bitmap* bitmap)
+// {
+//     pd_graphics.freeBitmap(bitmap);
+// }
 
-void graphics::draw_bitmap(const ksdk::bitmap& bitmap, int x, int y)
-{
-    pd_graphics.drawBitmap(const_cast<ksdk::bitmap*>(&bitmap), x, y, kBitmapUnflipped);
-}
+// void graphics::draw_bitmap(const ksdk::bitmap& bitmap, int x, int y)
+// {
+//     pd_graphics.drawBitmap(const_cast<ksdk::bitmap*>(&bitmap), x, y, kBitmapUnflipped);
+// }
 
-void graphics::get_bitmap_data(ksdk::bitmap* bitmap, int* width, int* height, int* rowbytes, uint8_t** mask, uint8_t** data)
-{
-    pd_graphics.getBitmapData(bitmap, width, height, rowbytes, mask, data);
-}
+// void graphics::get_bitmap_data(ksdk::bitmap* bitmap, int* width, int* height, int* rowbytes, uint8_t** mask, uint8_t** data)
+// {
+//     pd_graphics.getBitmapData(bitmap, width, height, rowbytes, mask, data);
+// }
 
-std::unique_ptr<ksdk::bitmap_table> graphics::new_bitmap_table(const std::string& path, int count, int width, int height)
-{
-    auto bitmap_table = std::make_unique<ksdk::playdate::bitmap_table>(pd_graphics, path, count, width, height);
-    return bitmap_table;
-}
+// std::unique_ptr<ksdk::bitmap_table> graphics::new_bitmap_table(const std::string& path, int count, int width, int height)
+// {
+//     auto bitmap_table = std::make_unique<ksdk::playdate::bitmap_table>(pd_graphics, path, count, width, height);
+//     return bitmap_table;
+// }
 
 void graphics::set_draw_offset(int x, int y)
 {
     pd_graphics.setDrawOffset(x, y);
 }
 
-ksdk::bitmap* graphics::get_framebuffer()
-{
-    ksdk::bitmap* frame = pd_graphics.copyFrameBufferBitmap();
-    return frame;
-}
+// ksdk::bitmap* graphics::get_framebuffer()
+// {
+//     ksdk::bitmap* frame = pd_graphics.copyFrameBufferBitmap();
+//     return frame;
+// }
 

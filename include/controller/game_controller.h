@@ -17,9 +17,9 @@ public:
     game_controller(const class input_controller& input_controller, ksdk::system& system);
     int on_tick(const ksdk::tick_event& tick_event) override;
 private:
-    const class input_controller& input_controller;
-    ksdk::system& system;
-    std::unique_ptr<ksdk::bitmap_table> bitmap_table;
+    // const class input_controller& input_controller;
+    // ksdk::system& system;
+    // std::unique_ptr<ksdk::bitmap_table> bitmap_table;
     class game_model game_model;
     class game_view game_view;
     std::queue<std::unique_ptr<ksdk::event>> events;

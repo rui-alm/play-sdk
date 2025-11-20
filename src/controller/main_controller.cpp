@@ -32,14 +32,14 @@ int main_controller::on_tick(const ksdk::tick_event& tick_event) {
     game_controller->on_tick(tick_event);
     break;
   case test_menu:
-      if (!test_menu_controller)
-          test_menu_controller = std::make_unique<class test_menu_controller>(input_controller, system);
-      main_model.on_tick(tick_event);
-      if (test_menu_controller->on_tick(tick_event))
-      {
-          main_model.set_state(main_menu);
-          test_menu_controller.reset();
-      }
+      // if (!test_menu_controller)
+      //     test_menu_controller = std::make_unique<class test_menu_controller>(input_controller, system);
+      // main_model.on_tick(tick_event);
+      // if (test_menu_controller->on_tick(tick_event))
+      // {
+      //     main_model.set_state(main_menu);
+      //     test_menu_controller.reset();
+      // }
       break;
   }
   system.draw_fps(0, 0);

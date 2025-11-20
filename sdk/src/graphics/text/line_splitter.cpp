@@ -25,20 +25,22 @@ size_t ksdk::line_splitter::max_index_that_fits(const char* text, const size_t s
     size_t search_start_ptr = start_index;
     size_t search_end_ptr = end_index;
     size_t previous_search_end_ptr = search_end_ptr;
+    size_t last_fitting_end_index = search_end_ptr;
     int width;
     while (search_start_ptr < search_end_ptr)
     {
-        width = graphics.get_text_width(text+search_start_ptr, search_end_ptr);
+        width = graphics.get_text_width(text+start_index, search_end_ptr-start_index);
         if (width > max_width)
         {
             previous_search_end_ptr = search_end_ptr;
-            search_end_ptr /= 2;
+            search_end_ptr = search_start_ptr + (search_end_ptr-search_start_ptr) / 2;
         }
         else
         {
             search_start_ptr = search_end_ptr;
+            last_fitting_end_index = search_end_ptr;
             search_end_ptr += (previous_search_end_ptr - search_end_ptr) / 2;
         }
     }
-    return search_end_ptr;
+    return last_fitting_end_index;
 }

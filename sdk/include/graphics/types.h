@@ -1,7 +1,8 @@
 #pragma once
 
-#include <pd_api.h>
-namespace ksdk
-{
-    typedef LCDBitmap bitmap;
-}
+// #include <pd_api.h>
+
+// namespace ksdk
+// {
+//     typedef LCDBitmap bitmap;
+// }

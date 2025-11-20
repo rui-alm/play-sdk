@@ -7,7 +7,9 @@
 #include <vector>
 
 #include <listener/tick_listener.h>
+#include <model/to_string.h>
 #include <model/tick_event.h>
+// #include <playdate/system/logger.h>
 #include <system/system.h>
 #include "test_state.h"
 
@@ -26,11 +28,26 @@ public:
     const std::vector<std::unique_ptr<test>>& get_sub_tests() const { return sub_tests; }
 
     void add_sub_test(std::unique_ptr<test>&& sub_test);
+
+    template <typename T>
+    static bool assert_eq(const T& actual, const T& expected)
+    {
+        const bool result = actual == expected;
+        return result;
+    }
+
+    template<typename T>
+    static bool assert_empty(const T& container)
+    {
+        const bool result = container.empty();
+        return result;
+    }
 protected:
     const size_t id;
     ksdk::system& system;
     const std::string title;
     test_state state;
+    bool result;
     bool sub_tests_passed;
     std::vector<std::unique_ptr<test>> sub_tests;
     std::queue<test*> test_queue;
