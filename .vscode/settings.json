@@ -1,0 +1,8 @@
+{
+    "cmake.configureSettings": {
+        // "CMAKE_TOOLCHAIN_FILE": "${env:PLAYDATE_SDK_PATH}/C_API/buildsupport/arm.cmake",
+        "PDCPP_BUILD_EXAMPLES": "OFF"
+    }
+}
+
+// -DCMAKE_TOOLCHAIN_FILE=<path_to_playdate_SDK>/C_API/buildsupport/arm.cmake
