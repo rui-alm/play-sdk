@@ -1,5 +1,8 @@
 #include "system/playdate/pd_system.h"
-#include "main_controller.h"
+#include "controllers/main_controller.h"
+#include "pd_api.h"
+#include "system/graphics.h"
+#include "system/playdate/pd_graphics.h"
 #include <memory>
 
 using namespace ksdk::playdate;
@@ -22,29 +25,39 @@ int pd_system::on_event(PlaydateAPI* pd, PDSystemEvent event, uint32_t arg)
         system = std::make_unique<ksdk::playdate::pd_system>(*pd);
         main_controller = std::make_unique<class main_controller>(*system);
 
-        system->pd_.display->setRefreshRate(20);
+        system->pd.display->setRefreshRate(20);
         // helloWorld = std::make_unique<HelloWorld>(pd);
 
         // and sets the tick function to be called on update to turn off the
         // typical 'Lua'-ness.
-        system->pd_.system->setUpdateCallback(on_update, pd);
+        system->pd.system->setUpdateCallback(on_update, pd);
     }
 
     // Destroy the global state to prevent memory leaks
     if (event == kEventTerminate)
     {
-        system->pd_.system->logToConsole("Tearing down...");
+        system->pd.system->logToConsole("Tearing down...");
+        main_controller.reset();
         system.reset();
     }
     return 0;
 }
 
-ksdk::system_display* pd_system::display()
+pd_system::pd_system(PlaydateAPI& pd) : pd(pd), pd_graphics(*pd.graphics)
 {
-    return nullptr;
 }
 
-void pd_system::drawFPS(int x, int y)
+ksdk::system_display& pd_system::display()
 {
-    pd_.system->drawFPS(x, y);
+    return pd_display;
+}
+
+ksdk::system_graphics& pd_system::graphics()
+{
+    return pd_graphics;
+}
+
+void pd_system::draw_fps(int x, int y)
+{
+    pd.system->drawFPS(x, y);
 }

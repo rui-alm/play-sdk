@@ -10,7 +10,6 @@
 #include <string>
 #include <pd_api.h>
 #include <pdcpp/pdnewlib.h>
-#include <tuple>
 
 #include "system/playdate/pd_system.h"
 

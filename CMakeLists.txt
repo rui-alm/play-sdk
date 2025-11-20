@@ -25,9 +25,12 @@ ${CMAKE_CURRENT_SOURCE_DIR}/sdk/include
 # Add its sources
 target_sources(PDLondon
 PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/system/playdate/pd_display.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/system/playdate/pd_graphics.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/system/playdate/pd_system.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/main_controller.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/controllers/main_controller.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/views/main_view.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/sprites/one.png)
 
 # Link against the pdcpp_core library, and you're good to go!
