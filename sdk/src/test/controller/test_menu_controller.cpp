@@ -2,6 +2,8 @@
 
 #include "model/tick_event.h"
 #include "test/graphics/font_test.h"
+#include "test/graphics/framebuffer_test.h"
+#include "test/graphics/text_test.h"
 #include "test/model/actor_test.h"
 #include "test/model/test_state.h"
 
@@ -13,6 +15,8 @@ test_menu_controller::test_menu_controller(class input_controller& input_control
     selected_test_menu_views.emplace_back(std::make_unique<test_menu_view>(system.graphics(), root_test));
     root_test.add_sub_test(std::move(std::make_unique<ksdk::actor_test>(system)));
     root_test.add_sub_test(std::move(std::make_unique<ksdk::font_test>(system)));
+    root_test.add_sub_test(std::move(std::make_unique<ksdk::framebuffer_test>(system)));
+    root_test.add_sub_test(std::move(std::make_unique<ksdk::text_test>(system)));
     const std::vector<std::unique_ptr<test>>& sub_tests = root_test.get_sub_tests();
     for (size_t i=0; i<sub_tests.size(); i++)
     {

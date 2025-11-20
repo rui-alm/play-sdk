@@ -1,13 +1,18 @@
 #include "system/playdate/pd_graphics.h"
+
+#include <memory>
+
 #include "graphics/bitmap_table.h"
 #include "graphics/types.h"
 #include "pd_api/pd_api_gfx.h"
 #include "playdate/graphics/pd_bitmap_table.h"
-#include <memory>
+#include "playdate/system/pd_system.h"
 
 using namespace ksdk::playdate;
 
-graphics::graphics(const playdate_graphics& pd_graphics) : pd_graphics(const_cast<playdate_graphics&>(pd_graphics))
+graphics::graphics(const playdate_graphics& pd_graphics)
+    : pd_graphics(const_cast<playdate_graphics&>(pd_graphics))
+    , selected_font(nullptr, &graphics::free_font)
 {
 }
 
@@ -33,8 +38,16 @@ int graphics::set_font(const std::string& path)
 {
     const char* err;
     LCDFont* const font = pd_graphics.loadFont(path.c_str(), &err);
+    selected_font = std::unique_ptr<LCDFont,void(*)(LCDFont*)>(font, &free_font);
     pd_graphics.setFont(font);
     return 0;
+}
+
+void graphics::free_font(LCDFont *font)
+{
+    std::ignore = font;
+    // TODO check need to free loaded fonts
+    // pd_system::system->pd.system->realloc(font, 0);
 }
 
 int graphics::get_font_height(const std::string &path, uint8_t& font_height) const
@@ -43,6 +56,12 @@ int graphics::get_font_height(const std::string &path, uint8_t& font_height) con
     LCDFont* const font = pd_graphics.loadFont(path.c_str(), &err);
     font_height = pd_graphics.getFontHeight(font);
     return 0;
+}
+
+int graphics::get_text_width(const std::string& text) const
+{
+    const int width = pd_graphics.getTextWidth(selected_font.get(), text.c_str(), text.size(), kUTF8Encoding, 0);
+    return width;
 }
 
 ksdk::bitmap* graphics::load_bitmap(const std::string& path)
@@ -71,4 +90,15 @@ std::unique_ptr<ksdk::bitmap_table> graphics::new_bitmap_table(const std::string
 void graphics::set_draw_offset(int x, int y)
 {
     pd_graphics.setDrawOffset(x, y);
+}
+
+ksdk::bitmap* graphics::get_framebuffer()
+{
+    ksdk::bitmap* frame = pd_graphics.copyFrameBufferBitmap();
+    return frame;
+}
+
+void graphics::get_bitmap_data(ksdk::bitmap* bitmap, int* width, int* height, int* rowbytes, uint8_t** mask, uint8_t** data)
+{
+    pd_graphics.getBitmapData(bitmap, width, height, rowbytes, mask, data);
 }

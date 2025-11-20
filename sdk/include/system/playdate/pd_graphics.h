@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <pd_api.h>
+#include <pd_api/pd_api_sys.h>
 
 #include "graphics/types.h"
 #include "system/graphics.h"
@@ -19,12 +20,18 @@ namespace ksdk::playdate {
         virtual int draw_rect(int x, int y, int width, int height) override;
         virtual int set_font(const std::string& path) override;
         virtual int get_font_height(const std::string &path, uint8_t& font_height) const override;
+        virtual int get_text_width(const std::string& text) const override;
         virtual ksdk::bitmap* load_bitmap(const std::string& path) override;
         virtual void free_bitmap(ksdk::bitmap* bitmap) override;
         virtual void draw_bitmap(const ksdk::bitmap& bitmap, int x, int y) override;
         virtual std::unique_ptr<ksdk::bitmap_table> new_bitmap_table(const std::string& path, int count, int width, int height) override;
         virtual void set_draw_offset(int x, int y) override;
+        virtual ksdk::bitmap* get_framebuffer() override;
+        virtual void get_bitmap_data(ksdk::bitmap* bitmap, int* width, int* height, int* rowbytes, uint8_t** mask, uint8_t** data) override;
     private:
         playdate_graphics& pd_graphics;
+        std::unique_ptr<LCDFont, void(*)(LCDFont*)> selected_font;
+
+        static void free_font(LCDFont* font);
     };
 }

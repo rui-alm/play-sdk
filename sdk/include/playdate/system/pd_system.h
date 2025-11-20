@@ -21,6 +21,7 @@ namespace ksdk
     {
         class pd_system : public ksdk::system
         {
+            friend class ksdk::playdate::graphics;
         public:
             pd_system(PlaydateAPI& pd);
             virtual ~pd_system() = default;

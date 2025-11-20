@@ -8,13 +8,13 @@ namespace ksdk
     {
     public:
         font_test(ksdk::system& system);
-        virtual int on_tick(const ksdk::tick_event &tick_event) override;
+        virtual int on_tick(const ksdk::tick_event& tick_event) override;
     };
 
     class font_height_test : public test
     {
     public:
         font_height_test(ksdk::system& system);
-        virtual int on_tick(const ksdk::tick_event &tick_event) override;
+        virtual int on_tick(const ksdk::tick_event& tick_event) override;
     };
 }

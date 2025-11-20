@@ -54,6 +54,10 @@ sdk/include/playdate/system/pd_file_system.h
 sdk/src/playdate/system/pd_file_system.cpp
 sdk/include/test/graphics/font_test.h
 sdk/src/test/playdate/graphics/pd_font_test.cpp
+sdk/include/test/graphics/framebuffer_test.h
+sdk/src/test/graphics/framebuffer_test.cpp
+sdk/include/test/graphics/text_test.h
+sdk/src/test/playdate/graphics/text_test.cpp
 )
 
 # Link against the pdcpp_core library, and you're good to go!
