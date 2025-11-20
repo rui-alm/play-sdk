@@ -19,6 +19,7 @@ namespace ksdk
         virtual int set_font(const std::string& path) = 0;
         virtual int get_font_height(const std::string& path, uint8_t& font_height) const = 0;
         virtual int get_text_width(const std::string& text) const = 0;
+        virtual int get_text_width(const char* const text, const size_t size) const = 0;
         virtual ksdk::bitmap* load_bitmap(const std::string& path) = 0;
         virtual void free_bitmap(ksdk::bitmap* bitmap) = 0;
         virtual void draw_bitmap(const ksdk::bitmap& bitmap, int x, int y) = 0;
