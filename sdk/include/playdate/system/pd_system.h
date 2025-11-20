@@ -10,7 +10,7 @@
 #include "system/graphics.h"
 #include "system/playdate/pd_graphics.h"
 #include "system/system.h"
-#include "system/playdate/pd_display.h"
+#include "playdate/system/pd_display.h"
 
 class main_controller;
 

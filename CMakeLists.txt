@@ -25,10 +25,12 @@ ${CMAKE_CURRENT_SOURCE_DIR}/sdk/include
 # Add its sources
 target_sources(PDLondon
 PUBLIC
-${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/playdate/pd_system.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/playdate/pd_display.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/playdate/pd_graphics.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/playdate/graphics/pd_bitmap_table.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/playdate/system/pd_system.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/assets/walls/wall.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/model/main_model.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/controller/game_controller.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/controller/input_controller.cpp

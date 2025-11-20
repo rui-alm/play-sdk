@@ -1,7 +1,9 @@
 #include "system/playdate/pd_graphics.h"
+#include "graphics/bitmap_table.h"
 #include "graphics/types.h"
 #include "pd_api/pd_api_gfx.h"
-#include "playdate/system/pd_system.h"
+#include "playdate/graphics/pd_bitmap_table.h"
+#include <memory>
 
 using namespace ksdk::playdate;
 
@@ -47,30 +49,13 @@ void graphics::free_bitmap(ksdk::bitmap* bitmap)
     pd_graphics.freeBitmap(bitmap);
 }
 
-void graphics::draw_bitmap(ksdk::bitmap* bitmap, int x, int y)
+void graphics::draw_bitmap(const ksdk::bitmap& bitmap, int x, int y)
 {
-    pd_graphics.drawBitmap(bitmap, x, y, kBitmapUnflipped);
+    pd_graphics.drawBitmap(const_cast<ksdk::bitmap*>(&bitmap), x, y, kBitmapUnflipped);
 }
 
-ksdk::bitmap_table* graphics::new_bitmap_table(int count, int width, int height)
+std::unique_ptr<ksdk::bitmap_table> graphics::new_bitmap_table(const std::string& path, int count, int width, int height)
 {
-    LCDBitmapTable* bitmap_table = pd_graphics.newBitmapTable(count, width, height);
+    auto bitmap_table = std::make_unique<ksdk::playdate::bitmap_table>(pd_graphics, path, count, width, height);
     return bitmap_table;
-}
-
-ksdk::bitmap* graphics::get_table_bitmap(ksdk::bitmap_table* bitmap_table, int idx)
-{
-    LCDBitmap* bitmap = pd_graphics.getTableBitmap(bitmap_table, idx);
-    return bitmap;
-}
-
-void graphics::load_into_bitmap_table(const std::string& path, ksdk::bitmap_table* bitmap_table)
-{
-    const char* err;
-    pd_graphics.loadIntoBitmapTable(path.c_str(), bitmap_table, &err);
-}
-
-void graphics::free_bitmap_table(ksdk::bitmap_table* bitmap_table)
-{
-    pd_graphics.freeBitmapTable(bitmap_table);
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <pd_api.h>
 
 #include "graphics/types.h"
@@ -19,11 +20,8 @@ namespace ksdk::playdate {
         virtual int set_font(const std::string& path) override;
         virtual ksdk::bitmap* load_bitmap(const std::string& path) override;
         virtual void free_bitmap(ksdk::bitmap* bitmap) override;
-        virtual void draw_bitmap(ksdk::bitmap* bitmap, int x, int y) override;
-        virtual ksdk::bitmap_table* new_bitmap_table(int count, int width, int height) override;
-        virtual ksdk::bitmap* get_table_bitmap(ksdk::bitmap_table* bitmap_table, int idx) override;
-        virtual void load_into_bitmap_table(const std::string& path, ksdk::bitmap_table* bitmap_table) override;
-        virtual void free_bitmap_table(ksdk::bitmap_table* bitmap_table) override;
+        virtual void draw_bitmap(const ksdk::bitmap& bitmap, int x, int y) override;
+        virtual std::unique_ptr<ksdk::bitmap_table> new_bitmap_table(const std::string& path, int count, int width, int height) override;
     private:
         playdate_graphics& pd_graphics;
     };

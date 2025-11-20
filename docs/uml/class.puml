@@ -1,0 +1,39 @@
+@startuml "pdlondon_class"
+
+skinparam linetype ortho
+
+class main_model
+
+interface tick_listener
+interface controller
+class game_controller
+class input_controller
+class main_controller
+
+interface view
+class game_view
+class main_view
+class main_view_playdate
+
+controller -u-|> tick_listener
+view -u-|> tick_listener
+
+game_controller -u-|> controller
+input_controller -u-|> controller
+main_controller -u-|> controller
+
+game_view -u-|> view
+main_view -u-|> view
+main_view_playdate -u-|> main_view
+
+main_controller "1" --> "1" game_controller
+main_controller "1" --> "1" input_controller
+main_controller "1" -d-> "1" main_model
+main_controller "1" -d-> "1" main_view_playdate
+
+main_view_playdate .d.> main_model
+
+game_controller .r.> input_controller
+game_controller "1" -d-> "1" game_view
+
+@enduml
