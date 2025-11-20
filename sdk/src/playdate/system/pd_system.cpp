@@ -5,7 +5,7 @@
 #include "pd_api.h"
 #include "pd_api/pd_api_sys.h"
 #include "system/graphics.h"
-#include "system/playdate/pd_graphics.h"
+#include "playdate/system/pd_graphics.h"
 #include <memory>
 #include <tuple>
 

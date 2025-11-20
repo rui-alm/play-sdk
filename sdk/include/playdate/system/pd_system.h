@@ -9,7 +9,7 @@
 #include "pd_api/pd_api_sys.h"
 #include "system/graphics.h"
 #include "playdate/system/pd_file_system.h"
-#include "system/playdate/pd_graphics.h"
+#include "playdate/system/pd_graphics.h"
 #include "system/system.h"
 #include "playdate/system/pd_display.h"
 

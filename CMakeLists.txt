@@ -27,7 +27,8 @@ target_sources(PDLondon
 PUBLIC
 sdk/src/model/actor/actor.cpp
 sdk/src/playdate/pd_display.cpp
-sdk/src/playdate/pd_graphics.cpp
+sdk/include/playdate/system/pd_graphics.h
+sdk/src/playdate/system/pd_graphics.cpp
 sdk/src/playdate/graphics/pd_bitmap_table.cpp
 sdk/src/playdate/system/pd_system.cpp
 src/main.cpp

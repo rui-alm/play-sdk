@@ -1,4 +1,4 @@
-#include "system/playdate/pd_graphics.h"
+#include "playdate/system/pd_graphics.h"
 
 #include <memory>
 
