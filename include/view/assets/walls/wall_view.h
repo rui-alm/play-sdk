@@ -14,9 +14,9 @@ public:
             : graphics(graphics), wall(wall)
             , bitmap_table(bitmap_table) {}
     virtual ~wall_view() = default;
-    virtual int on_tick(void* userdata) override
+    virtual int on_tick(const ksdk::tick_event& tick_event) override
     {
-        std::ignore = userdata;
+        std::ignore = tick_event;
         const int idx = 0;
         ksdk::bitmap& bitmap = bitmap_table.get(idx);
         graphics.draw_bitmap(bitmap, wall.get_x(), wall.get_y());

@@ -6,8 +6,8 @@ main_view::main_view(ksdk::system_graphics& graphics) : graphics(graphics)
 {
 }
 
-int main_view::on_tick(void* userdata)
+int main_view::on_tick(const ksdk::tick_event& tick_event)
 {
-    std::ignore = userdata;
+    std::ignore = tick_event;
     return 0;
 }

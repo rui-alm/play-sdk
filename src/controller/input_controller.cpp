@@ -12,9 +12,9 @@ int input_controller::key_pressed(uint32_t key)
     return 0;
 }
 
-int input_controller::on_tick(void* userdata)
+int input_controller::on_tick(const ksdk::tick_event& tick_event)
 {
-    std::ignore = userdata;
+    std::ignore = tick_event;
     system.button_state(down_keys, pressed_keys, released_keys);
     return 0;
 }

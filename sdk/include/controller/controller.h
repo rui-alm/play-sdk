@@ -1,6 +1,7 @@
 #pragma once
 
 #include "listener/tick_listener.h"
+#include "model/tick_event.h"
 
 namespace ksdk
 {
@@ -9,6 +10,6 @@ namespace ksdk
     public:
         controller() = default;
         virtual ~controller() = default;
-        virtual int on_tick(void* userdata) = 0;
+        virtual int on_tick(const tick_event& tick_event) = 0;
     };
 }

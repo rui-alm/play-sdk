@@ -12,9 +12,9 @@ main_model::main_model(const class input_controller& input_controller) :
 {
 }
 
-int main_model::on_tick(void *userdata)
+int main_model::on_tick(const ksdk::tick_event& tick_event)
 {
-    std::ignore = userdata;
+    std::ignore = tick_event;
     const ksdk::keys pressed_keys = input_controller.get_pressed_keys();
     switch(state)
     {

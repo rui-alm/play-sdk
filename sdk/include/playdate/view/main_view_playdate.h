@@ -9,7 +9,7 @@ public:
     main_view_playdate(ksdk::system_graphics& graphics, const class main_model& main_model);
     virtual ~main_view_playdate() = default;
     
-    virtual int on_tick(void* userdata) override;
+    virtual int on_tick(const ksdk::tick_event& tick_event) override;
 private:
     const class main_model& main_model;
 };

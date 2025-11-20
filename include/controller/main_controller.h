@@ -14,7 +14,7 @@ public:
     main_controller(ksdk::system& system);
     virtual ~main_controller() = default;
 
-    virtual int on_tick(void* userdata) override;
+    virtual int on_tick(const ksdk::tick_event& tick_event) override;
 
     // input_controller
     // virtual int key_pressed(uint32_t key) override;

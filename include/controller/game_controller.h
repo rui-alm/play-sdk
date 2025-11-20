@@ -12,7 +12,7 @@ class game_controller : public ksdk::controller
 {
 public:
     game_controller(const class input_controller& input_controller, ksdk::system& system);
-    int on_tick(void *userdata) override;
+    int on_tick(const ksdk::tick_event& tick_event) override;
 private:
     const class input_controller& input_controller;
     ksdk::system& system;

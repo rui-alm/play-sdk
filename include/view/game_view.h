@@ -9,9 +9,9 @@ class game_view : ksdk::view
 {
 public:
     game_view(ksdk::system_graphics& graphics, const class game_model& game_model);
-    ~game_view() = default;
+    virtual ~game_view() = default;
 
-    int on_tick(void* userdata) override;
+    int on_tick(const ksdk::tick_event& tick_event) override;
     
     template<class ACTOR_VIEW, class... ARGS>
     void add_actor_view(const int id, ARGS&&... args)

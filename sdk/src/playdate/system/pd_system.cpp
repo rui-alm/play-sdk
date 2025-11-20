@@ -1,6 +1,7 @@
 #include "playdate/system/pd_system.h"
 #include "controller/main_controller.h"
 #include "model/keys.h"
+#include "model/tick_event.h"
 #include "pd_api.h"
 #include "pd_api/pd_api_sys.h"
 #include "system/graphics.h"
@@ -13,9 +14,16 @@ using namespace ksdk::playdate;
 std::unique_ptr<pd_system> pd_system::system;
 std::unique_ptr<main_controller> pd_system::main_controller;
 
+unsigned int pd_system::last_timestamp = 0;
+
 int pd_system::on_update(void* userdata)
 {
-    const int ret = main_controller->on_tick(userdata);
+    PlaydateAPI *pd = reinterpret_cast<PlaydateAPI*>(userdata);
+    const unsigned int millis = pd->system->getCurrentTimeMilliseconds();
+    const float delta_seconds = static_cast<float>(millis - last_timestamp) / 1000.0f;
+    last_timestamp = millis;
+    const tick_event tick_event(delta_seconds);
+    const int ret = main_controller->on_tick(tick_event);
     return ret;
 }
 
@@ -95,4 +103,10 @@ std::vector<ksdk::keys> pd_system::buttons_to_vector(PDButtons& buttons)
     if (buttons & kButtonB)
         vector.emplace_back(Back);
     return vector;
+}
+
+unsigned int pd_system::get_current_time_milliseconds()
+{
+    const unsigned int milliseconds = pd.system->getCurrentTimeMilliseconds();
+    return milliseconds;
 }

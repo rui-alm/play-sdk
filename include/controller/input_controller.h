@@ -12,7 +12,7 @@ public:
     virtual ~input_controller() = default;
     virtual int key_pressed(uint32_t key);
 
-    virtual int on_tick(void* userdata) override;
+    virtual int on_tick(const ksdk::tick_event& tick_event) override;
 
     virtual inline ksdk::keys get_down_keys() const { return down_keys; }
     virtual inline ksdk::keys get_pressed_keys() const { return pressed_keys; }

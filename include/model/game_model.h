@@ -29,7 +29,7 @@ public:
 
     const ksdk::actor& get_camera() const { return camera; }
 
-    int on_tick(void* userdata);
+    int on_tick(const ksdk::tick_event& tick_event);
 private:
     static constexpr int CELL_SIZE_X = 100;
     static constexpr int CELL_SIZE_Y = 100;

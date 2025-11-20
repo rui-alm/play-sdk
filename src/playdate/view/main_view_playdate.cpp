@@ -13,9 +13,9 @@ main_view_playdate::main_view_playdate(ksdk::system_graphics& graphics,
     graphics.set_font("/System/Fonts/Asheville-Sans-14-Bold.pft");
 }
 
-int main_view_playdate::on_tick(void* userdata)
+int main_view_playdate::on_tick(const ksdk::tick_event& tick_event)
 {
-    std::ignore = userdata;
+    std::ignore = tick_event;
     const int selected_menu = main_model.get_selected_menu();
     graphics.clear();
     const std::string menu = "New Game " + std::to_string(selected_menu);

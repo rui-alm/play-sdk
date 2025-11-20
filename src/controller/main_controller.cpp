@@ -13,13 +13,13 @@ main_controller::main_controller(ksdk::system &system)
     , input_controller(system), main_model(input_controller)
     , main_view_(system.graphics(), main_model) {}
 
-int main_controller::on_tick(void *userdata) {
-  input_controller.on_tick(userdata);
+int main_controller::on_tick(const ksdk::tick_event& tick_event) {
+  input_controller.on_tick(tick_event);
   const main_state state = main_model.get_state();
   switch (state) {
   case main_menu:
-    main_model.on_tick(userdata);
-    main_view_.on_tick(userdata);
+    main_model.on_tick(tick_event);
+    main_view_.on_tick(tick_event);
     break;
   case load_game:
     if (!game_controller)
@@ -27,8 +27,8 @@ int main_controller::on_tick(void *userdata) {
     main_model.set_state(run_game);
     break;
   case run_game:
-    main_model.on_tick(userdata);
-    game_controller->on_tick(userdata);
+    main_model.on_tick(tick_event);
+    game_controller->on_tick(tick_event);
     break;
   }
   system.draw_fps(0, 0);

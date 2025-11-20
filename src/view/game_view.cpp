@@ -8,7 +8,7 @@ game_view::game_view(ksdk::system_graphics& graphics, const class game_model& ga
 {
 }
 
-int game_view::on_tick(void* userdata)
+int game_view::on_tick(const ksdk::tick_event& tick_event)
 {
     graphics.clear();
     const auto& camera = game_model.get_camera();
@@ -18,7 +18,7 @@ int game_view::on_tick(void* userdata)
     {
         const auto& actor = actor_entry.second;
         const auto& actor_view = actors_views.at(actor->get_id());
-        actor_view->on_tick(userdata);
+        actor_view->on_tick(tick_event);
     }
     return 0;
 }

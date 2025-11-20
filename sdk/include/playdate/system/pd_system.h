@@ -33,9 +33,11 @@ namespace ksdk
             virtual void button_state(ksdk::keys& down
                                     , ksdk::keys& pressed
                                     , ksdk::keys& released) override;
+            unsigned int get_current_time_milliseconds();
         private:
             static std::unique_ptr<pd_system> system;
             static std::unique_ptr<class main_controller> main_controller;
+            static unsigned int last_timestamp;
             PlaydateAPI& pd;
             ksdk::playdate::display pd_display;
             ksdk::playdate::graphics pd_graphics;
